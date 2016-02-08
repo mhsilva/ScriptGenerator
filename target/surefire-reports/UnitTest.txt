@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: UnitTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.01 sec <<< FAILURE!
+UnitTest.testScriptHandler()  Time elapsed: 0.006 sec  <<< FAILURE!
+java.lang.RuntimeException: Uncompilable source code - cannot find symbol
+  symbol:   class Test
+  location: class UnitTest
+	at UnitTest.testScriptHandler(UnitTest.java:19)
