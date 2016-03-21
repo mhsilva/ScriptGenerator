@@ -5,16 +5,18 @@
  */
 package com.mhf.script.generator.screen;
 
-import com.mhf.script.generator.util.Executor;
-import com.mhf.script.generator.util.ScriptGeneratorModel;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+
+import com.mhf.script.generator.util.Executor;
+import com.mhf.script.generator.util.ScriptGeneratorModel;
 
 /**
  *
@@ -27,9 +29,10 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
      */
     public ScriptGeneratorMain() {
         initComponents();
-        Component component = this;
-        
+        final Component component = this;
+
         txtPath.addMouseListener(new MouseAdapter() {
+
             public void mouseClicked(MouseEvent e) {
                 JFileChooser chooser = new JFileChooser();
                 chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -73,6 +76,7 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
         btnAdd = new javax.swing.JButton();
         btnRemove = new javax.swing.JButton();
         btnClearAll = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ScriptGenerator");
@@ -155,6 +159,15 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox1.setSelected(true);
+        jCheckBox1.setText("Remove Older Events");
+        jCheckBox1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -168,21 +181,20 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
                         .addComponent(btnGeraScript, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblPath)
-                                    .addComponent(lblScriptName)
-                                    .addComponent(lblUEName)
-                                    .addComponent(lblFunc)
-                                    .addComponent(lblOrder))
-                                .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtFunc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
-                                    .addComponent(txtUEName, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtScriptName, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPath, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtOrder)))
+                            .addComponent(lblPath)
+                            .addComponent(lblScriptName)
+                            .addComponent(lblUEName)
+                            .addComponent(lblFunc)
+                            .addComponent(lblOrder)
                             .addComponent(lblScripts))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtFunc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+                            .addComponent(txtUEName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtScriptName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPath, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtOrder)
+                            .addComponent(jCheckBox1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -237,7 +249,8 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
                     .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblScripts)
                     .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClearAll))
+                    .addComponent(btnClearAll)
+                    .addComponent(jCheckBox1))
                 .addGap(4, 4, 4)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -251,23 +264,27 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPathActionPerformed
-
-    }//GEN-LAST:event_txtPathActionPerformed
-
-    private void txtScriptNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtScriptNameActionPerformed
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtScriptNameActionPerformed
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
-    private void jComboOpFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboOpFuncActionPerformed
+    private void txtPathActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtPathActionPerformed
+
+    }// GEN-LAST:event_txtPathActionPerformed
+
+    private void txtScriptNameActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtScriptNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboOpFuncActionPerformed
+    }// GEN-LAST:event_txtScriptNameActionPerformed
 
-    private void txtEventNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEventNameActionPerformed
+    private void jComboOpFuncActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jComboOpFuncActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEventNameActionPerformed
+    }// GEN-LAST:event_jComboOpFuncActionPerformed
 
-    private void btnGeraScriptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeraScriptActionPerformed
+    private void txtEventNameActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtEventNameActionPerformed
+        // TODO add your handling code here:
+    }// GEN-LAST:event_txtEventNameActionPerformed
+
+    private void btnGeraScriptActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnGeraScriptActionPerformed
 
         List<String> listEventCollection = new ArrayList<>();
 
@@ -275,9 +292,8 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
             listEventCollection.add(listEventModel.getElementAt(i));
         }
 
-        ScriptGeneratorModel sgm = new ScriptGeneratorModel(txtPath.getText(), txtScriptName.getText(),
-                txtUEName.getText(), txtFunc.getText(), txtOrder.getText(),
-                listEventCollection, txtAreaScript.getText());
+        ScriptGeneratorModel sgm =
+            new ScriptGeneratorModel(txtPath.getText(), txtScriptName.getText(), txtUEName.getText(), txtFunc.getText(), txtOrder.getText(), listEventCollection, txtAreaScript.getText());
         try {
             Executor exec = new Executor();
             exec.execute(sgm);
@@ -285,30 +301,31 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
         } catch (Throwable e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-    }//GEN-LAST:event_btnGeraScriptActionPerformed
+    }// GEN-LAST:event_btnGeraScriptActionPerformed
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAddActionPerformed
 
         listEventModel.addElement(jComboOpFunc.getSelectedItem().toString() + "-" + txtEventName.getText());
-    }//GEN-LAST:event_btnAddActionPerformed
+    }// GEN-LAST:event_btnAddActionPerformed
 
-    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnRemoveActionPerformed
 
         listEventModel.removeElement(listEvent.getSelectedValue());
-    }//GEN-LAST:event_btnRemoveActionPerformed
+    }// GEN-LAST:event_btnRemoveActionPerformed
 
-    private void btnClearAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearAllActionPerformed
+    private void btnClearAllActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnClearAllActionPerformed
         listEventModel.removeAllElements();
-    }//GEN-LAST:event_btnClearAllActionPerformed
+    }// GEN-LAST:event_btnClearAllActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /*
+         * If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -326,10 +343,11 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ScriptGeneratorMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+        // </editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 new ScriptGeneratorMain().setVisible(true);
             }
@@ -337,11 +355,13 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
     }
 
     DefaultListModel<String> listEventModel = new DefaultListModel<>();
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClearAll;
     private javax.swing.JButton btnGeraScript;
     private javax.swing.JButton btnRemove;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboOpFunc;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

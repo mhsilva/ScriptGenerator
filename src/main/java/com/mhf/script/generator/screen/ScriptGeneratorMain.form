@@ -34,24 +34,21 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblPath" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblScriptName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblUEName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblFunc" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblOrder" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="txtFunc" alignment="0" pref="316" max="32767" attributes="0"/>
-                                  <Component id="txtUEName" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtScriptName" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtPath" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtOrder" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="lblPath" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblScriptName" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblUEName" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFunc" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblOrder" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblScripts" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="txtFunc" alignment="0" pref="316" max="32767" attributes="0"/>
+                          <Component id="txtUEName" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtScriptName" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtPath" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtOrder" max="32767" attributes="0"/>
+                          <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -123,6 +120,7 @@
                   <Component id="lblScripts" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnRemove" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnClearAll" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="316" max="-2" attributes="0"/>
@@ -293,6 +291,16 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClearAllActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+      <Properties>
+        <Property name="selected" type="boolean" value="true"/>
+        <Property name="text" type="java.lang.String" value="Remove Older Events"/>
+        <Property name="horizontalTextPosition" type="int" value="2"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
