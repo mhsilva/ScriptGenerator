@@ -84,6 +84,7 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
         lblPath.setText("Path");
 
         txtPath.addActionListener(new java.awt.event.ActionListener() {
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPathActionPerformed(evt);
             }
@@ -98,6 +99,7 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
         lblOrder.setText("Order");
 
         txtScriptName.addActionListener(new java.awt.event.ActionListener() {
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtScriptNameActionPerformed(evt);
             }
@@ -107,6 +109,7 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
 
         jComboOpFunc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Search", "Edit", "Insert", "Delete" }));
         jComboOpFunc.addActionListener(new java.awt.event.ActionListener() {
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboOpFuncActionPerformed(evt);
             }
@@ -115,6 +118,7 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
         lblEventName.setText("Event Name");
 
         txtEventName.addActionListener(new java.awt.event.ActionListener() {
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEventNameActionPerformed(evt);
             }
@@ -131,6 +135,7 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
         btnGeraScript.setText("Generate");
         btnGeraScript.setPreferredSize(new java.awt.Dimension(85, 23));
         btnGeraScript.addActionListener(new java.awt.event.ActionListener() {
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGeraScriptActionPerformed(evt);
             }
@@ -139,6 +144,7 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
         btnAdd.setText("Add");
         btnAdd.setPreferredSize(new java.awt.Dimension(85, 23));
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
             }
@@ -147,6 +153,7 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
         btnRemove.setText("Remove");
         btnRemove.setPreferredSize(new java.awt.Dimension(85, 23));
         btnRemove.addActionListener(new java.awt.event.ActionListener() {
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemoveActionPerformed(evt);
             }
@@ -154,6 +161,7 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
 
         btnClearAll.setText("Clear");
         btnClearAll.addActionListener(new java.awt.event.ActionListener() {
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearAllActionPerformed(evt);
             }
@@ -163,6 +171,7 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
         jCheckBox1.setText("Remove Older Events");
         jCheckBox1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox1ActionPerformed(evt);
             }
@@ -170,93 +179,75 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnGeraScript, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPath)
-                            .addComponent(lblScriptName)
-                            .addComponent(lblUEName)
-                            .addComponent(lblFunc)
-                            .addComponent(lblOrder)
-                            .addComponent(lblScripts))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtFunc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
-                            .addComponent(txtUEName, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtScriptName, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPath, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtOrder)
-                            .addComponent(jCheckBox1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnClearAll, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblOpFunc)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboOpFunc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblEventName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtEventName))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPath)
-                    .addComponent(txtPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblOpFunc)
+        layout
+            .setHorizontalGroup(
+                layout
+                    .createParallelGroup(
+                        javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(
+                        layout.createSequentialGroup().addContainerGap()
+                            .addGroup(
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(
+                                        jScrollPane2)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                        layout.createSequentialGroup()
+                                            .addGap(0, 0,
+                                                Short.MAX_VALUE)
+                                            .addComponent(btnGeraScript, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(
+                                        layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(lblPath).addComponent(lblScriptName).addComponent(lblUEName)
+                                                .addComponent(lblFunc).addComponent(lblOrder).addComponent(lblScripts))
+                                            .addGap(26, 26,
+                                                26)
+                                            .addGroup(
+                                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                    .addComponent(txtFunc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+                                                    .addComponent(txtUEName,
+                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(txtScriptName, javax.swing.GroupLayout.Alignment.LEADING).addComponent(txtPath, javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(txtOrder).addComponent(jCheckBox1))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup().addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(btnClearAll, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup().addComponent(lblOpFunc).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(jComboOpFunc, 0,
+                            javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup().addComponent(lblEventName).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(txtEventName))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))).addContainerGap()));
+        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup().addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(lblPath)
+                    .addComponent(txtPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE).addComponent(lblOpFunc)
                     .addComponent(jComboOpFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(lblScriptName)
+                .addComponent(txtScriptName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE).addComponent(lblEventName)
+                .addComponent(txtEventName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createSequentialGroup()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(lblUEName).addComponent(txtUEName, javax.swing.GroupLayout.PREFERRED_SIZE,
+                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblScriptName)
-                    .addComponent(txtScriptName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEventName)
-                    .addComponent(txtEventName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(lblFunc).addComponent(txtFunc, javax.swing.GroupLayout.PREFERRED_SIZE,
+                    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblUEName)
-                            .addComponent(txtUEName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblFunc)
-                            .addComponent(txtFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblOrder)
-                            .addComponent(txtOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblScripts)
-                    .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClearAll)
-                    .addComponent(jCheckBox1))
-                .addGap(4, 4, 4)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGeraScript, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(lblOrder).addComponent(txtOrder, javax.swing.GroupLayout.PREFERRED_SIZE,
+                    javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE).addComponent(lblScripts)
+                .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE).addComponent(btnClearAll)
+                .addComponent(jCheckBox1)).addGap(4, 4, 4).addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(btnGeraScript, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
         lblPath.getAccessibleContext().setAccessibleName("lblPath");
         txtPath.getAccessibleContext().setAccessibleName("");
@@ -264,9 +255,9 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }// GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void txtPathActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtPathActionPerformed
 
@@ -297,7 +288,10 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
         try {
             Executor exec = new Executor();
             exec.execute(sgm);
-            JOptionPane.showMessageDialog(this, "Script gerado com sucesso.");
+            int selected = JOptionPane.showConfirmDialog(this, "Script gerado com sucesso. Deseja Salvar o layout?", "Salva Script?", JOptionPane.YES_NO_OPTION);
+            if (selected == JOptionPane.YES_OPTION) {
+                System.out.println("YES");
+            }
         } catch (Throwable e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -358,28 +352,51 @@ public class ScriptGeneratorMain extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+
     private javax.swing.JButton btnClearAll;
+
     private javax.swing.JButton btnGeraScript;
+
     private javax.swing.JButton btnRemove;
+
     private javax.swing.JCheckBox jCheckBox1;
+
     private javax.swing.JComboBox<String> jComboOpFunc;
+
     private javax.swing.JScrollPane jScrollPane1;
+
     private javax.swing.JScrollPane jScrollPane2;
+
     private javax.swing.JLabel lblEventName;
+
     private javax.swing.JLabel lblFunc;
+
     private javax.swing.JLabel lblOpFunc;
+
     private javax.swing.JLabel lblOrder;
+
     private javax.swing.JLabel lblPath;
+
     private javax.swing.JLabel lblScriptName;
+
     private javax.swing.JLabel lblScripts;
+
     private javax.swing.JLabel lblUEName;
+
     private javax.swing.JList<String> listEvent;
+
     private javax.swing.JTextArea txtAreaScript;
+
     private javax.swing.JTextField txtEventName;
+
     private javax.swing.JTextField txtFunc;
+
     private javax.swing.JTextField txtOrder;
+
     private javax.swing.JTextField txtPath;
+
     private javax.swing.JTextField txtScriptName;
+
     private javax.swing.JTextField txtUEName;
     // End of variables declaration//GEN-END:variables
 }
