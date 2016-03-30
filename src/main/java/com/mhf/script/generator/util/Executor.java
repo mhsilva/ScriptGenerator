@@ -22,8 +22,7 @@ public class Executor {
 
     public void execute(ScriptGeneratorModel baseModel) throws IOException {
         outputStream = new FileOutputStream(createOutputFile(baseModel.getFilePath(), baseModel.getScriptName()));
-        String formatedHeader = MessageFormat.format(ScriptTemplate.headerData, baseModel.getScriptName(),
-                baseModel.getUserExitName(), baseModel.getFunctionality(), baseModel.getOrder());
+        String formatedHeader = MessageFormat.format(ScriptTemplate.headerData, baseModel.getScriptName(), baseModel.getUserExitName(), baseModel.getFunctionality(), baseModel.getOrder());
         writeToFile(formatedHeader);
         StringBuffer procedureCalls = new StringBuffer();
         for (String chunk : scriptHandler(baseModel.getScript(), procedureCalls)) {
@@ -39,23 +38,30 @@ public class Executor {
         outputStream.close();
     }
 
-    public File createOutputFile(String path, String scriptName) throws IOException {
-        path = path + "/" + scriptName + ".sql";
+    public File createOutputFile(String path,
+        String scriptName) throws IOException {
+        return this.createOutputFile(path, scriptName, ".sql");
+    }
+
+    public File createOutputFile(String path,
+        String scriptName,
+        String ext) throws IOException {
+        path = path + "/" + scriptName + ext;
         System.out.println(path);
         File file = new File(path);
         file.createNewFile();
         return file;
     }
-    
-    public List<String> scriptHandler(String script, StringBuffer procedureCalls) {
+
+    public List<String> scriptHandler(String script,
+        StringBuffer procedureCalls) {
         int size = 30000;
         List<String> scriptSplit = new ArrayList<>();
 
         int sourceNumber = 1;
         for (int start = 0; start < script.length(); start += size) {
-            scriptSplit.add("  v_s_source" + sourceNumber + "             varchar2(32000) := '"
-                    + script.substring(start, Math.min(script.length(), start + size)).replaceAll("'", "'|| chr(39) ||'").replaceAll("&&", "'|| chr(38) || chr(38) ||'").replaceAll("@Override","'|| chr(64) ||'Override").replaceAll("@CompileStatic","'|| chr(64) ||'CompileStatic")
-                    + "';\n");
+            scriptSplit.add("  v_s_source" + sourceNumber + "             varchar2(32000) := '" + script.substring(start, Math.min(script.length(), start + size)).replaceAll("'", "'|| chr(39) ||'")
+                .replaceAll("&&", "'|| chr(38) || chr(38) ||'").replaceAll("@Override", "'|| chr(64) ||'Override").replaceAll("@CompileStatic", "'|| chr(64) ||'CompileStatic") + "';\n");
             procedureCalls.append("    PRC_ADD_SOURCE(v_s_source");
             procedureCalls.append(sourceNumber++);
             procedureCalls.append(");\n");
@@ -64,7 +70,8 @@ public class Executor {
         return scriptSplit;
     }
 
-    public StringBuffer eventHandler(List<String> eventsOpFunc, StringBuffer ueUeEvent) {
+    public StringBuffer eventHandler(List<String> eventsOpFunc,
+        StringBuffer ueUeEvent) {
         StringBuffer sb = new StringBuffer();
         for (String eventOpFunc : eventsOpFunc) {
             String[] split = eventOpFunc.split("-");
@@ -75,7 +82,7 @@ public class Executor {
         }
         return sb;
     }
-    
+
     public void writeToFile(String text) throws IOException {
         outputStream.write(text.getBytes());
     }
