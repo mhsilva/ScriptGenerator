@@ -20,8 +20,9 @@ public class ScriptGeneratorModel {
     private String order;
     private List<String> event;
     private String script;
+    private String version;
 
-    public ScriptGeneratorModel(String filePath, String scriptName, String userExitName, String functionality, String order, List<String> event, String script) {
+    public ScriptGeneratorModel(String filePath, String scriptName, String userExitName, String functionality, String order, List<String> event, String script, String version) {
         this.filePath = filePath;
         this.scriptName = scriptName;
         this.userExitName = userExitName;
@@ -29,6 +30,7 @@ public class ScriptGeneratorModel {
         this.order = order;
         this.event = event;
         this.script = script;
+        this.version = version;
     }
 
     public String getFilePath() {
@@ -85,6 +87,14 @@ public class ScriptGeneratorModel {
 
     public void setScript(String script) {
         this.script = script;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
     }
 
 }

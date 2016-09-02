@@ -10,8 +10,8 @@ package com.mhf.script.generator.util;
  * @author Matheus
  */
 public class ScriptTemplate {
-
-    public static String headerData = "declare\n"
+    
+    public String headerData = "declare\n"
             + "  v_n_id_saas_partition   number;\n"
             + "  v_n_id_user_exit        &&TAXIT_USER..FMK_USER_EXIT.ID_USER_EXIT%type;\n"
             + "  v_n_id_script_editor    &&TAXIT_USER..FMK_SCRIPT_EDITOR.ID_SCRIPT_EDITOR%type;\n"
@@ -22,7 +22,7 @@ public class ScriptTemplate {
             + "  v_s_functionality_name  &&TAXIT_USER..FMK_FUNCTIONALITY.S_FUNCTIONALITY_NAME%type := ''{2}'';\n"
             + "  v_n_order				  number := ''{3}'';\n"
             + "  v_s_saas_name			  varchar2(250)	  := ''&&PARTITION_NAME'';\n";
-    public static String headerProcedures = "  \n"
+    public String headerProcedures = "  \n"
             + "  procedure PRC_ADD_SOURCE (v_s_source in varchar2) is \n"
             + "  begin\n"
             + "    DBMS_LOB.WRITEAPPEND(v_cl_source, length(v_s_source), v_s_source);\n"
@@ -49,18 +49,18 @@ public class ScriptTemplate {
             + "  \n"
             + "  DBMS_LOB.CREATETEMPORARY(v_cl_source, true, DBMS_LOB.SESSION);\n"
             + "  v_n_id_saas_partition := FNC_GET_SAAS_PARTITION(v_s_saas_name); --Criar\n";
-    public static String staticInsert = "  begin\n"
+    public String staticInsert = "  begin\n"
             + "    insert into &&TAXIT_USER..FMK_SCRIPT_EDITOR\n"
             + "      (ID_SCRIPT_EDITOR,\n"
             + "       S_SCRIPT_NAME,\n"
             + "       CL_SOURCE_CODE,\n"
             + "       S_ACTIVE,\n"
-            + "       ID_SAAS_PARTITION_CST)\n"
+            + "       {0})\n"
             + "    values\n"
-            + "      (&&TAXIT_USER.. FNC_FMK_JPA_SEQ_NEXTVAL('FmkScriptEditor'),\n"
+            + "      (&&TAXIT_USER.. FNC_FMK_JPA_SEQ_NEXTVAL(''FmkScriptEditor''),\n"
             + "       v_s_script_name,\n"
             + "       null,\n"
-            + "       'Y',\n"
+            + "       ''Y'',\n"
             + "       v_n_id_saas_partition)\n"
             + "    returning ID_SCRIPT_EDITOR into v_n_id_script_editor;\n"
             + "  exception\n"
@@ -68,12 +68,12 @@ public class ScriptTemplate {
             + "      select ID_SCRIPT_EDITOR\n"
             + "        into v_n_id_script_editor\n"
             + "        from &&TAXIT_USER..FMK_SCRIPT_EDITOR\n"
-            + "       where S_SCRIPT_NAME = v_s_script_name and id_saas_partition_cst = v_n_id_saas_partition;\n"
+            + "       where S_SCRIPT_NAME = v_s_script_name and {0} = v_n_id_saas_partition;\n"
             + "      --\n"
             + "      update &&TAXIT_USER..FMK_SCRIPT_EDITOR\n"
             + "         set S_SCRIPT_NAME         = v_s_script_name,\n"
             + "             CL_SOURCE_CODE        = null,\n"
-            + "             S_ACTIVE              = nvl(S_ACTIVE, 'Y')\n"
+            + "             S_ACTIVE              = nvl(S_ACTIVE, ''Y'')\n"
             + "       where id_script_editor = v_n_id_script_editor;\n"
             + "    when others then\n"
             + "      null;\n"
@@ -89,31 +89,31 @@ public class ScriptTemplate {
             + "       ID_SOURCE_CODE_STATUS,\n"
             + "       ID_SAAS_PARTITION)\n"
             + "    values\n"
-            + "      (&&TAXIT_USER.. FNC_FMK_JPA_SEQ_NEXTVAL('FmkScriptEditorCst'),\n"
+            + "      (&&TAXIT_USER.. FNC_FMK_JPA_SEQ_NEXTVAL(''FmkScriptEditorCst''),\n"
             + "       v_n_id_script_editor,\n"
             + "       v_cl_source,\n"
-            + "       'Y',\n"
-            + "       'Y',\n"
+            + "       ''Y'',\n"
+            + "       ''Y'',\n"
             + "       1,\n"
             + "       (select ID_DOMAIN\n"
             + "          from &&TAXIT_USER..FMK_DOMAIN\n"
-            + "         where S_DICTIONARY_KEY = 'IT_SCRIPT_EDITOR_STATUS_VALIDATED'), "
+            + "         where S_DICTIONARY_KEY = ''IT_SCRIPT_EDITOR_STATUS_VALIDATED''), "
             + "       v_n_id_saas_partition) returning ID_SCRIPT_EDITOR_CST into v_n_id_script_editor_cst;\n"
             + "  exception\n"
             + "    when dup_val_on_index then\n"
             + "      update &&TAXIT_USER..FMK_SCRIPT_EDITOR_CST\n"
             + "         set ID_SCRIPT_EDITOR      = v_n_id_script_editor,\n"
             + "             CL_SOURCE_CODE        = v_cl_source,\n"
-            + "             S_ACTIVE              = nvl(S_ACTIVE, 'Y'),\n"
-            + "             S_CUSTOM_ON_OFF       = nvl(S_CUSTOM_ON_OFF, 'Y'),\n"
+            + "             S_ACTIVE              = nvl(S_ACTIVE, ''Y''),\n"
+            + "             S_CUSTOM_ON_OFF       = nvl(S_CUSTOM_ON_OFF, ''Y''),\n"
             + "             N_LAST_RELEASE        = (SELECT NVL((MAX(sv.N_RELEASE)+1),1) FROM &&TAXIT_USER..FMK_SCRIPT_EDITOR_VERSION sv WHERE sv.ID_SCRIPT_EDITOR_CST = &&TAXIT_USER..FMK_SCRIPT_EDITOR_CST.ID_SCRIPT_EDITOR_CST),\n"
             + "             ID_SOURCE_CODE_STATUS =\n"
             + "             (select ID_DOMAIN\n"
             + "                from &&TAXIT_USER..FMK_DOMAIN\n"
-            + "               where S_DICTIONARY_KEY = 'IT_SCRIPT_EDITOR_STATUS_VALIDATED'),\n"
+            + "               where S_DICTIONARY_KEY = ''IT_SCRIPT_EDITOR_STATUS_VALIDATED''),\n"
             + "             ID_SAAS_PARTITION     = v_n_id_saas_partition\n"
             + "       where ID_SCRIPT_EDITOR = v_n_id_script_editor and ID_SAAS_PARTITION = v_n_id_saas_partition\n"
-            + "	   returning ID_SCRIPT_EDITOR_CST into v_n_id_script_editor_cst;\n"
+            + "    returning ID_SCRIPT_EDITOR_CST into v_n_id_script_editor_cst;\n"
             + "    when others then\n"
             + "      null;\n"
             + "  end;\n"
@@ -122,13 +122,13 @@ public class ScriptTemplate {
             + "      (ID_USER_EXIT,\n"
             + "       S_NAME_USER_EXIT,\n"
             + "       S_ENABLED,\n"
-            + "       ID_SAAS_PARTITION_CST,\n"
+            + "       {0},\n"
             + "       N_ORDER,\n"
             + "       ID_SCRIPT_EDITOR)\n"
             + "    values\n"
-            + "      (&&TAXIT_USER.. FNC_FMK_JPA_SEQ_NEXTVAL('FmkUserExit'),\n"
-            + "       NVL(v_s_user_exit_name, upper(v_s_script_name) || '_EXIT'),\n"
-            + "       'N',\n"
+            + "      (&&TAXIT_USER.. FNC_FMK_JPA_SEQ_NEXTVAL(''FmkUserExit''),\n"
+            + "       NVL(v_s_user_exit_name, upper(v_s_script_name) || ''_EXIT''),\n"
+            + "       ''N'',\n"
             + "       v_n_id_saas_partition,\n"
             + "       v_n_order,\n"
             + "       v_n_id_script_editor)\n"
@@ -138,14 +138,14 @@ public class ScriptTemplate {
             + "      select ID_USER_EXIT\n"
             + "        into v_n_id_user_exit\n"
             + "        from &&TAXIT_USER..FMK_USER_EXIT\n"
-            + "       where S_NAME_USER_EXIT = NVL(v_s_user_exit_name,upper(v_s_script_name) || '_EXIT') and id_saas_partition_cst = v_n_id_saas_partition;\n"
+            + "       where S_NAME_USER_EXIT = NVL(v_s_user_exit_name,upper(v_s_script_name) || ''_EXIT'') and {0} = v_n_id_saas_partition;\n"
             + "      --\n"
             + "      update &&TAXIT_USER..FMK_USER_EXIT\n"
-            + "         set S_NAME_USER_EXIT      = NVL(v_s_user_exit_name,upper(v_s_script_name) || '_EXIT'),\n"
-            + "             S_ENABLED             = 'N',\n"
+            + "         set S_NAME_USER_EXIT      = NVL(v_s_user_exit_name,upper(v_s_script_name) || ''_EXIT''),\n"
+            + "             S_ENABLED             = ''N'',\n"
             + "             N_ORDER               = v_n_order,\n"
             + "             ID_SCRIPT_EDITOR      = v_n_id_script_editor\n"
-            + "       where S_NAME_USER_EXIT = NVL(v_s_user_exit_name,upper(v_s_script_name) || '_EXIT') and ID_SAAS_PARTITION_CST = v_n_id_saas_partition;\n"
+            + "       where S_NAME_USER_EXIT = NVL(v_s_user_exit_name,upper(v_s_script_name) || ''_EXIT'') and {0} = v_n_id_saas_partition;\n"
             + "    when others then\n"
             + "      null;\n"
             + "  end;\n"
@@ -159,10 +159,10 @@ public class ScriptTemplate {
             + "       N_ORDER,\n"
             + "       ID_SCRIPT_EDITOR)\n"
             + "    values\n"
-            + "      (&&TAXIT_USER..FNC_FMK_JPA_SEQ_NEXTVAL('FmkUserExitCst'),\n"
+            + "      (&&TAXIT_USER..FNC_FMK_JPA_SEQ_NEXTVAL(''FmkUserExitCst''),\n"
             + "       v_n_id_user_exit,\n"
-            + "       'Y',\n"
-            + "       'Y',\n"
+            + "       ''Y'',\n"
+            + "       ''Y'',\n"
             + "       v_n_id_saas_partition,\n"
             + "       v_n_order,\n"
             + "       v_n_id_script_editor);\n"
@@ -170,8 +170,8 @@ public class ScriptTemplate {
             + "    when dup_val_on_index then\n"
             + "      update &&TAXIT_USER..FMK_USER_EXIT_CST\n"
             + "         set ID_USER_EXIT      = v_n_id_user_exit,\n"
-            + "             S_ENABLED         = nvl(S_ENABLED, 'Y'),\n"
-            + "             S_CUSTOM_ON_OFF   = nvl(S_CUSTOM_ON_OFF, 'Y'),\n"
+            + "             S_ENABLED         = nvl(S_ENABLED, ''Y''),\n"
+            + "             S_CUSTOM_ON_OFF   = nvl(S_CUSTOM_ON_OFF, ''Y''),\n"
             + "             ID_SAAS_PARTITION = v_n_id_saas_partition,\n"
             + "             N_ORDER           = v_n_order,\n"
             + "             ID_SCRIPT_EDITOR  = v_n_id_script_editor\n"
@@ -179,7 +179,7 @@ public class ScriptTemplate {
             + "    when others then\n"
             + "      null;\n"
             + "  end;\n";
-    public static String footerData = "  begin\n"
+    public String footerData = "  begin\n"
             + "    INSERT\n"
             + "    INTO &&TAXIT_USER..FMK_SCRIPT_EDITOR_VERSION\n"
             + "      (\n"
@@ -204,7 +204,7 @@ public class ScriptTemplate {
             + "  DBMS_LOB.FREETEMPORARY(v_cl_source);\n"
             + "end;\n"
             + "/";
-    public static String insertEvent = "begin\n" +
+    public String insertEvent = "begin\n" +
 "  insert into &&TAXIT_USER..FMK_USER_EXIT_EVENT\n" +
 "    (ID_USER_EXIT_EVENT,\n" +
 "     ID_OPERATION_FUNCTIONALITY,\n" +
@@ -227,7 +227,7 @@ public class ScriptTemplate {
 "  when dup_val_on_index then\n" +
 "    null;\n" +
 "end;\n";
-    public static String insertUserExitXEvent = "begin\n" +
+    public String insertUserExitXEvent = "begin\n" +
 "  -- link user exit e user exit event\n" +
 "  insert into &&TAXIT_USER..FMK_USER_EXIT_USER_EXIT_EVENT\n" +
 "    (ID_USER_EXIT_USER_EXIT_EVENT, ID_USER_EXIT_EVENT, ID_USER_EXIT)\n" +
@@ -251,4 +251,117 @@ public class ScriptTemplate {
 "  when others then\n" +
 "    null;\n" +
 "end;\n";
+
+    
+    /**
+     * Gets the attribute headerData.
+     *
+     * @return headerData.
+     */
+    public String getHeaderData() {
+        return headerData;
+    }
+    
+    /**
+     * Sets the attribute headerData.
+     *
+     * @param headerData to set the headerData.
+     */
+    public void setHeaderData(String headerData) {
+        this.headerData = headerData;
+    }
+    
+    /**
+     * Gets the attribute headerProcedures.
+     *
+     * @return headerProcedures.
+     */
+    public String getHeaderProcedures() {
+        return headerProcedures;
+    }
+    
+    /**
+     * Sets the attribute headerProcedures.
+     *
+     * @param headerProcedures to set the headerProcedures.
+     */
+    public void setHeaderProcedures(String headerProcedures) {
+        this.headerProcedures = headerProcedures;
+    }
+    
+    /**
+     * Gets the attribute staticInsert.
+     *
+     * @return staticInsert.
+     */
+    public String getStaticInsert() {
+        return staticInsert;
+    }
+    
+    /**
+     * Sets the attribute staticInsert.
+     *
+     * @param staticInsert to set the staticInsert.
+     */
+    public void setStaticInsert(String staticInsert) {
+        this.staticInsert = staticInsert;
+    }
+    
+    /**
+     * Gets the attribute footerData.
+     *
+     * @return footerData.
+     */
+    public String getFooterData() {
+        return footerData;
+    }
+    
+    /**
+     * Sets the attribute footerData.
+     *
+     * @param footerData to set the footerData.
+     */
+    public void setFooterData(String footerData) {
+        this.footerData = footerData;
+    }
+    
+    /**
+     * Gets the attribute insertEvent.
+     *
+     * @return insertEvent.
+     */
+    public String getInsertEvent() {
+        return insertEvent;
+    }
+    
+    /**
+     * Sets the attribute insertEvent.
+     *
+     * @param insertEvent to set the insertEvent.
+     */
+    public void setInsertEvent(String insertEvent) {
+        this.insertEvent = insertEvent;
+    }
+    
+    /**
+     * Gets the attribute insertUserExitXEvent.
+     *
+     * @return insertUserExitXEvent.
+     */
+    public String getInsertUserExitXEvent() {
+        return insertUserExitXEvent;
+    }
+    
+    /**
+     * Sets the attribute insertUserExitXEvent.
+     *
+     * @param insertUserExitXEvent to set the insertUserExitXEvent.
+     */
+    public void setInsertUserExitXEvent(String insertUserExitXEvent) {
+        this.insertUserExitXEvent = insertUserExitXEvent;
+    }
+    
+    
+    
+    
 }

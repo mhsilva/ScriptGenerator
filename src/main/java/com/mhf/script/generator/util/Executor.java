@@ -20,21 +20,24 @@ public class Executor {
 
     private FileOutputStream outputStream;
 
+    private ScriptTemplate scriptTemplate;
+
     public void execute(ScriptGeneratorModel baseModel) throws IOException {
+        scriptTemplate = new ScriptTemplate();
         outputStream = new FileOutputStream(createOutputFile(baseModel.getFilePath(), baseModel.getScriptName()));
-        String formatedHeader = MessageFormat.format(ScriptTemplate.headerData, baseModel.getScriptName(), baseModel.getUserExitName(), baseModel.getFunctionality(), baseModel.getOrder());
+        String formatedHeader = MessageFormat.format(scriptTemplate.getHeaderData(), baseModel.getScriptName(), baseModel.getUserExitName(), baseModel.getFunctionality(), baseModel.getOrder());
         writeToFile(formatedHeader);
         StringBuffer procedureCalls = new StringBuffer();
         for (String chunk : scriptHandler(baseModel.getScript(), procedureCalls)) {
             writeToFile(chunk);
         }
-        writeToFile(ScriptTemplate.headerProcedures);
+        writeToFile(scriptTemplate.getHeaderProcedures());
         StringBuffer ueUeEvent = new StringBuffer();
         writeToFile(eventHandler(baseModel.getEvent(), ueUeEvent).toString());
         writeToFile(procedureCalls.toString());
-        writeToFile(ScriptTemplate.staticInsert);
+        writeToFile(MessageFormat.format(scriptTemplate.getStaticInsert(), baseModel.getVersion()));
         writeToFile(ueUeEvent.toString());
-        writeToFile(ScriptTemplate.footerData);
+        writeToFile(scriptTemplate.getFooterData());
         outputStream.close();
     }
 
@@ -77,8 +80,8 @@ public class Executor {
             String[] split = eventOpFunc.split("-");
             String opFunc = split[0];
             String eventName = split[1];
-            sb.append(MessageFormat.format(ScriptTemplate.insertEvent, opFunc, eventName));
-            ueUeEvent.append(MessageFormat.format(ScriptTemplate.insertUserExitXEvent, eventName, opFunc));
+            sb.append(MessageFormat.format(scriptTemplate.getInsertEvent(), opFunc, eventName));
+            ueUeEvent.append(MessageFormat.format(scriptTemplate.getInsertUserExitXEvent(), eventName, opFunc));
         }
         return sb;
     }
