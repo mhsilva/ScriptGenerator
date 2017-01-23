@@ -63,8 +63,9 @@ public class Executor {
 
         int sourceNumber = 1;
         for (int start = 0; start < script.length(); start += size) {
-            scriptSplit.add("  v_s_source" + sourceNumber + "             varchar2(32000) := '" + script.substring(start, Math.min(script.length(), start + size)).replaceAll("'", "'|| chr(39) ||'")
-                .replaceAll("&&", "'|| chr(38) || chr(38) ||'").replaceAll("@Override", "'|| chr(64) ||'Override").replaceAll("@CompileStatic", "'|| chr(64) ||'CompileStatic") + "';\n");
+            scriptSplit.add("  v_s_source" + sourceNumber + "             varchar2(32000) := '" +
+                script.substring(start, Math.min(script.length(), start + size)).replaceAll("'", "'|| chr(39) ||'").replaceAll("&&", "'|| chr(38) || chr(38) ||'").replaceAll("@", "'|| chr(64) ||'") +
+                "';\n");
             procedureCalls.append("    PRC_ADD_SOURCE(v_s_source");
             procedureCalls.append(sourceNumber++);
             procedureCalls.append(");\n");
